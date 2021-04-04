@@ -40,27 +40,37 @@ namespace jqxgrid_api.Controllers
             }
         }
         
-        public ActionResult Edit(int id, Employee emp)
+        public ActionResult Edit(Employee emp)
         {
             try
             {
-                ctx.Entry(emp).State = EntityState.Modified;
-                ctx.SaveChanges();
-                return RedirectToAction("GetData");
+                if (ModelState.IsValid)
+                {
+                    ctx.Entry(emp).State = EntityState.Modified;
+                    ctx.SaveChanges();
+                    return RedirectToAction("GetData");
+                }
+
+                return HttpNotFound();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
         } 
         
-        public ActionResult Delete(Employee emp)
+        public ActionResult Delete(int id)
         {
             try
             {
-                ctx.Employees.Remove(emp);
-                ctx.SaveChanges();
-                return RedirectToAction("GetData");
+                var employee = ctx.Employees.FirstOrDefault(x => x.Id == id);
+                if (employee != null)
+                {
+                    ctx.Employees.Remove(employee);
+                    ctx.SaveChanges();
+                    return RedirectToAction("GetData");
+                }
+                return HttpNotFound();
             }
             catch(Exception)
             {

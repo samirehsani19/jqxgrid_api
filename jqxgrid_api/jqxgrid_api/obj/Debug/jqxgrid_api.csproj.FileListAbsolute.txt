@@ -72,7 +72,6 @@ C:\Users\seh\source\repos\jqxgrid_api\jqxgrid_api\jqxgrid_api\bin\System.Web.Web
 C:\Users\seh\source\repos\jqxgrid_api\jqxgrid_api\jqxgrid_api\bin\Newtonsoft.Json.xml
 C:\Users\seh\source\repos\jqxgrid_api\jqxgrid_api\jqxgrid_api\bin\Antlr3.Runtime.pdb
 C:\Users\seh\source\repos\jqxgrid_api\jqxgrid_api\jqxgrid_api\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\seh\source\repos\jqxgrid_api\jqxgrid_api\jqxgrid_api\obj\Debug\jqxgrid_api.csprojAssemblyReference.cache
 C:\Users\seh\source\repos\jqxgrid_api\jqxgrid_api\jqxgrid_api\obj\Debug\jqxgrid_api.csproj.CoreCompileInputs.cache
 C:\Users\seh\source\repos\jqxgrid_api\jqxgrid_api\jqxgrid_api\obj\Debug\jqxgrid_api.csproj.CopyComplete
 C:\Users\seh\source\repos\jqxgrid_api\jqxgrid_api\jqxgrid_api\obj\Debug\jqxgrid_api.dll
@@ -85,3 +84,4 @@ C:\Users\seh\source\repos\jqxgrid_api\jqxgrid_api\jqxgrid_api\obj\Debug\jqxgrid_
 C:\Users\seh\source\repos\jqxgrid_api\jqxgrid_api\jqxgrid_api\obj\Debug\jqxgrid_api.csproj.GenerateResource.cache
 C:\Users\seh\source\repos\jqxgrid_api\jqxgrid_api\jqxgrid_api\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\seh\source\repos\jqxgrid_api\jqxgrid_api\jqxgrid_api\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\seh\source\repos\jqxgrid_api\jqxgrid_api\jqxgrid_api\obj\Debug\jqxgrid_api.csprojAssemblyReference.cache

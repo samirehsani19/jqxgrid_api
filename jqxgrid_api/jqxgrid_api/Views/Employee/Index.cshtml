@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>welcome to Index Samir</h2>
+<h2>Welcome Samir</h2>
 
 <link href="~/Content/Theme/jquery-ui.min.css" rel="stylesheet" />
 <link href="~/Content/ui.jqgrid.css" rel="stylesheet" />
@@ -28,12 +28,12 @@
                 mtype: 'GET',
                 datatype: 'json',
                 colModel: [
-                    { label: 'Id', name: 'Id' },
-                    { label: 'Name', name: 'Name' },
-                    { label: 'Age', name: 'Age' },
-                    { label: 'Profession', name: 'Profession' },
-                    { label: 'Salary', name: 'Salary'},
-                    { label: 'Experience', name: 'Experience'}
+                    { label: 'Id', name: 'Id', editable: true, key: true, hidden: true, search: false },
+                    { label: 'Name', name: 'Name', editable: true, editrules: { required: true } }, // name is required before submitting
+                    { label: 'Age', name: 'Age', editable: true, editrules: { required: true, number: true } },
+                    { label: 'Profession', name: 'Profession', editable: true, },
+                    { label: 'Salary', name: 'Salary', editable: true,},
+                    { label: 'Experience', name: 'Experience', editable: true,}
                 ],
                 loadonce: true,
                 pager: '#jqGridPager', // devide it in page
@@ -42,22 +42,52 @@
                 viewrecords: true,
                 height:  250,
                 width: 1240,
-                emptyrecords: 'No Employee record is available'
+                emptyrecords: 'No Employee record is available',
+
             });
 
             //// search and crud option
-            $("#jqGrid").jqGrid('navGrid', '#jqGridPager', { edit: true, add: true, del: true },
+            $("#jqGrid").jqGrid('navGrid', '#jqGridPager',
+                {
+                    edit: true,
+                    add: true,
+                    del: true,
+                    refresh: true,
+                    closeAfterSearch: true
+                },
                 { // edit
-                    
+                    url: '/Employee/Edit',
+                    closeOnEscape: true,
+                    closeAfterDel: true,
+                    reloadAfterSubmit: true,
+                    recreateForm: true,
+                    afterSubmit: function () {
+                        $('#jqGrid').jqGrid('setGridParam', { datatype: 'json' }).trigger('reloadGrid');
+                    }
                 },
                 { // add
                     url: '/Employee/Add',
                     closeOnEscape: true,
                     closeAfterAdd: true,
+                    reloadAfterSubmit: true,
+                    recreateForm: true,
+                    afterSubmit: function () {
+                        $('#jqGrid').jqGrid('setGridParam', { datatype: 'json' }).trigger('reloadGrid');
+                    }
                 },
                 { // delete
-
-                });  
+                    url: '/Employee/Delete',
+                    closeOnEscape: true,
+                    closeAfterEdit: true,
+                    recreateForm: true,
+                    msg: 'Are you sure? you want to delete the selected record',
+                    width: '400',  // width of popup 
+                    reloadAfterSubmit: true,
+                    afterSubmit: function () {
+                        $('#jqGrid').jqGrid('setGridParam', { datatype: 'json' }).trigger('reloadGrid');
+                    }
+                }
+            );
 
         });
 
