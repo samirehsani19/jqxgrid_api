@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<h2>welcome to Index Samir</h2>
+
+<link href="~/Content/Theme/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/Content/ui.jqgrid.css" rel="stylesheet" />
+<link href="~/Content/Theme/jquery-ui.css" />
+
+
+<!--Display data-->
+<table id="jqGrid"></table>
+
+<!--Display paging option-->
+<div id="jqGridPager"></div>
+
+
+
+@section scripts{
+
+    <script src="~/Scripts/jqGrid/grid.locale-en.js"></script>
+    <script src="~/Scripts/jqGrid/jquery.jqGrid.min.js"></script>
+    <script>
+        $(function () {
+            $grid = $("#jqGrid").jqGrid({
+                url: '@Url.Action("GetData","Employee")',
+                mtype: 'GET',
+                datatype: 'json',
+                colModel: [
+                    { label: 'Id', name: 'Id' },
+                    { label: 'Name', name: 'Name' },
+                    { label: 'Age', name: 'Age' },
+                    { label: 'Profession', name: 'Profession' },
+                    { label: 'Salary', name: 'Salary'},
+                    { label: 'Experience', name: 'Experience'}
+                ],
+                loadonce: true,
+                pager: '#jqGridPager', // devide it in page
+                rowNum: 10, // show 10 in one page
+                rowList: [10, 20, 50, 100], // dropdown option to select how many you want to see,
+                viewrecords: true,
+                height:  250,
+                width: 1240,
+                emptyrecords: 'No Employee record is available'
+            });
+
+            //// search and crud option
+            $("#jqGrid").jqGrid('navGrid', '#jqGridPager', { edit: true, add: true, del: true },
+                { // edit
+                    
+                },
+                { // add
+                    url: '/Employee/Add',
+                    closeOnEscape: true,
+                    closeAfterAdd: true,
+                },
+                { // delete
+
+                });  
+
+        });
+
+    </script>
+
+}
