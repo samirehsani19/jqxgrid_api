@@ -1,0 +1,79 @@
+﻿@using jqxgrid_api.Models
+@model List<Employee>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+@if (Model == null)
+{
+    <p>No employee found</p>
+}
+else
+{
+    foreach (var emp in Model)
+    {
+        <div style="width: 500px; background: orange; display:inline-block; margin: 13px;">
+            <div class="main" style="width:500px; height: 220px; ">
+                <p style="margin: 13px;">ID: @emp.Id</p>
+                <p style="margin: 13px;">Name: @emp.Name</p>
+                <p style="margin: 13px;">Age: @emp.Age</p>
+                <p style="margin: 13px;">Profession: @emp.Profession</p>
+                <p style="margin: 13px;">Experience: @emp.Experience</p>
+                <p style="margin: 13px;">Salary: @emp.Salary</p>
+                <input type="button" onclick="DeleteEmployee(@emp.Id)" class="btn btn-danger" value="Delete Employee" /> @*sending id to javascript  function*@
+            </div>
+        </div>
+        <br />
+        <br />
+
+        //@Html.Partial("_TestsPartial", emp); // sending data to partial view to display. return mvc html string
+        { Html.RenderPartial("_TestsPartial", emp); } // return void
+
+    }
+
+}
+
+
+<script>
+
+    function DeleteEmployee(id) {
+
+        $.ajax({
+            url: "http://localhost:53832/employee/delete/1",
+            type: "Delete",
+            data: { "id": id },
+            success: function (data) {
+                alert('successfully deleted');
+            },
+            error: function () {
+                alert('failed to delete');
+            }
+            
+        });
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+<br />
+@*getting data from controller using ajax
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js" integrity="sha512-DedNBWPF0hLGUPNbCYfj8qjlEnNE92Fqn7xd3Sscfu7ipy7Zu33unHdugqRD3c4Vj7/yLv+slqZhMls/4Oc7Zg==" crossorigin="anonymous"></script>
+    @Ajax.ActionLink("All", "GetAmount", new AjaxOptions
+        {
+            HttpMethod = "Get",
+            UpdateTargetId = "data",  // set data to div bellow
+            InsertionMode = InsertionMode.Replace,
+        });
+    <div id="data" style="width: 400px; height:400px; background: yellow; color:white;"></div>*@

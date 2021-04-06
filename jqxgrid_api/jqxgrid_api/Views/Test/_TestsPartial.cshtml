@@ -1,0 +1,16 @@
+﻿@model jqxgrid_api.Models.Employee
+
+<h1>Welcome to test partial view</h1>
+@if (Model != null)
+{
+    <div style="background:green; width:400px; height: 200px;">
+        <div style="margin:20px;">
+            <h2>@Model.Name</h2>
+            <h2>@Model.Experience</h2>
+            <h2>@Model.Age</h2>
+            <h2>@Model.Salary</h2>
+            <h2>@Model.Profession</h2>
+        </div>
+    </div>
+}
+
