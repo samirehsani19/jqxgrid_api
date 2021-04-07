@@ -137,12 +137,23 @@
         }
 
 
+    .button-container{
+        display:flex; 
+        justify-content:space-between;
+    }
+
+    .file-upload-btn{
+        margin: 0px 10px;
+    }
+
 </style>
 
 
 <div class="file-upload">
-    <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
-    <button class="file-upload-btn" onclick="SaveImage()">Save Image</button>
+    <div class="button-container">
+        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+        <button class="file-upload-btn" onclick="SaveImage()">Save Image</button>
+    </div>
 
     <div class="image-upload-wrap">
         <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
@@ -218,6 +229,7 @@
         });
 
     }
+
 
 
 </script>
