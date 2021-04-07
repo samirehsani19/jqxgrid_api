@@ -211,9 +211,11 @@
     <Content Include="Views\Test\Get.cshtml" />
     <Content Include="Views\Test\_TestsPartial.cshtml" />
     <Content Include="Views\Test\_AjaxTest.cshtml" />
+    <Content Include="Views\Test\Save.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

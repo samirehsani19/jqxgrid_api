@@ -9,6 +9,14 @@
 }
 else
 {
+
+
+    { Html.RenderPartial("Save"); }
+    <br />
+    <br />
+
+
+
     foreach (var emp in Model)
     {
         <div style="width: 500px; background: orange; display:inline-block; margin: 13px;">
@@ -27,8 +35,8 @@ else
 
         //@Html.Partial("_TestsPartial", emp); // sending data to partial view to display. return mvc html string
         { Html.RenderPartial("_TestsPartial", emp); } // return void
-
     }
+
 
 }
 
@@ -47,7 +55,7 @@ else
             error: function () {
                 alert('failed to delete');
             }
-            
+
         });
 
     }
